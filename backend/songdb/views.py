@@ -11,7 +11,7 @@ from songdb.serializers import CountryOptionSerializer, SongListSerializer, Song
 
 @swagger_auto_schema(method='GET', responses={200: CountryOptionSerializer(many=True)})
 @api_view(['GET'])
-def country_option_list(request):
+def country_list(request):
     countries = Country.objects.all()
     serializer = CountryOptionSerializer(countries, many=True)
     return Response(serializer.data)
@@ -19,7 +19,7 @@ def country_option_list(request):
 
 @swagger_auto_schema(method='GET', responses={200: PersonOptionSerializer(many=True)})
 @api_view(['GET'])
-def person_option_list(request):
+def person_list(request):
     persons = Person.objects.all()
     serializer = PersonOptionSerializer(persons, many=True)
     return Response(serializer.data)
@@ -27,7 +27,7 @@ def person_option_list(request):
 
 @swagger_auto_schema(method='GET', responses={200: SongListSerializer(many=True)})
 @api_view(['GET'])
-def movies_list(request):
+def songs_list(request):
     countries = Song.objects.all()
     serializer = SongListSerializer(countries, many=True)
     return Response(serializer.data)
@@ -35,7 +35,7 @@ def movies_list(request):
 
 @swagger_auto_schema(method='POST', request_body=SongFormSerializer, responses={200: SongFormSerializer()})
 @api_view(['POST'])
-def movie_form_create(request):
+def song_form_create(request):
     data = JSONParser().parse(request)
     serializer = SongFormSerializer(data=data)
     if serializer.is_valid():
@@ -46,7 +46,7 @@ def movie_form_create(request):
 
 @swagger_auto_schema(method='PUT', request_body=SongFormSerializer, responses={200: SongFormSerializer()})
 @api_view(['PUT'])
-def movie_form_update(request, pk):
+def song_form_update(request, pk):
     try:
         song = Song.objects.get(pk=pk)
     except Song.DoesNotExist:
@@ -62,7 +62,7 @@ def movie_form_update(request, pk):
 
 @swagger_auto_schema(method='GET', responses={200: SongFormSerializer()})
 @api_view(['GET'])
-def movie_form_get(request, pk):
+def song_form_get(request, pk):
     try:
         song = Song.objects.get(pk=pk)
     except Song.DoesNotExist:
@@ -73,7 +73,7 @@ def movie_form_get(request, pk):
 
 
 @api_view(['DELETE'])
-def movie_delete(request, pk):
+def song_delete(request, pk):
     try:
         song = Song.objects.get(pk=pk)
     except Country.DoesNotExist:

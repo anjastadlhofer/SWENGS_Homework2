@@ -15,13 +15,13 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path('country/options', views.country_option_list),
-    path('person/options', views.person_option_list),
-    path('song/list', views.movies_list),
-    path('song/create', views.movie_form_create),
-    path('song/<int:pk>/get', views.movie_form_get),
-    path('song/<int:pk>/update', views.movie_form_update),
-    path('song/<int:pk>/delete', views.movie_delete),
+    path('country/options', views.country_list),
+    path('person/options', views.person_list),
+    path('song/list', views.songs_list),
+    path('song/create', views.song_form_create),
+    path('song/<int:pk>/get', views.song_form_get),
+    path('song/<int:pk>/update', views.song_form_update),
+    path('song/<int:pk>/delete', views.song_delete),
 
     url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
