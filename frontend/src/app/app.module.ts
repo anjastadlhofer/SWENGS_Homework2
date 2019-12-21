@@ -18,6 +18,8 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import {DateComponent} from './date/date.component';
+import { SingerListComponent } from './singer-list/singer-list.component';
+import { SingerFormComponent } from './singer-form/singer-form.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import {DateComponent} from './date/date.component';
     SongListComponent,
     SongFormComponent,
     DateComponent,
+    SingerListComponent,
+    SingerFormComponent,
   ],
   imports: [
     BrowserModule,

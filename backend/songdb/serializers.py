@@ -13,6 +13,9 @@ class PersonOptionSerializer(serializers.ModelSerializer):
         model = Person
         fields = '__all__'
 
+    #def get_name(self, obj):
+        #return ' '.join(filter(None, (obj.first_name, obj.last_name)))
+
 
 class SongFormSerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,16 +23,14 @@ class SongFormSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-#class SongListSerializer(serializers.ModelSerializer):
-    #country_name = serializers.SerializerMethodField()
+class SongListSerializer(serializers.ModelSerializer):
+    country_name = serializers.SerializerMethodField()
 
-    #singers = PersonOptionSerializer(many=True)
+    class Meta:
+        model = Song
+        fields = ['id', 'title', 'genre', 'release_date', 'story', 'selled', 'country_name', 'band',
+                  'singers']
 
-   # class Meta:
-    #    model = Song
-    #    fields = ['id', 'title', 'genre', 'release_date', 'story', 'selled', 'country_name', 'band', 'singers']
-
-   # def get_country_name(self, obj):
-     #   return obj.country.name if obj.country else ''
-
+    def get_country_name(self, obj):
+        return obj.country.name if obj.country else ''
 

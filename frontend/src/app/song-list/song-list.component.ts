@@ -29,11 +29,4 @@ export class SongListComponent implements OnInit {
     });
   }
 
-  /*deleteSong(song: any) {
-    this.http.delete('/api/song/' + song.id + '/delete').subscribe(() => {
-      this.ngOnInit();
-    });
-
-  }*/
-
 }

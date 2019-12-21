@@ -1,0 +1,36 @@
+<form [formGroup]="singerFormGroup" class="singer-form">
+  <mat-form-field>
+    <input matInput type="text" placeholder="Alias" formControlName="alias">
+    <mat-hint align="end">Alias of the singer</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput type="text" placeholder="First Name" formControlName="first_name" required></textarea>
+    <mat-hint align="end">First Name of the singer</mat-hint>
+    <mat-error *ngIf="singerFormGroup.controls.first_name.hasError('required')">First Name is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput type="text" placeholder="Last Name" formControlName="last_name" required></textarea>
+    <mat-hint align="end">Last Name of the singer</mat-hint>
+    <mat-error *ngIf="singerFormGroup.controls.last_name.hasError('required')">Last Name is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="Year of Birth" formControlName="year_of_birth" required>
+    <mat-hint align="end">Year of Birth of the singer</mat-hint>
+    <mat-error *ngIf="singerFormGroup.controls.year_of_birth.hasError('required')">Year of Birth is required</mat-error>
+    <mat-error *ngIf="singerFormGroup.controls.year_of_birth.hasError('min')">Too old</mat-error>
+  </mat-form-field>
+
+  <mat-checkbox formControlName="active">Active</mat-checkbox>
+
+  <br/>
+  <mat-card-actions align="center">
+    <button mat-raised-button color="primary" [disabled]="!singerFormGroup.valid" (click)="createSinger()">
+      <span *ngIf="!singerFormGroup.controls.id.value">Create</span>
+      <span *ngIf="singerFormGroup.controls.id.value">Update</span>
+    </button>
+  </mat-card-actions>
+</form>
+

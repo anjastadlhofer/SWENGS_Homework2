@@ -6,7 +6,7 @@ from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
 
 from songdb.models import Country, Song, Person
-from songdb.serializers import CountryOptionSerializer, SongFormSerializer, PersonOptionSerializer
+from songdb.serializers import CountryOptionSerializer, SongFormSerializer, PersonOptionSerializer, SongListSerializer
 
 
 #@swagger_auto_schema(method='GET', responses={200: CountryOptionSerializer(many=True)})
@@ -29,7 +29,7 @@ def person_list(request):
 @api_view(['GET'])
 def songs_list(request):
     countries = Song.objects.all()
-    serializer = SongFormSerializer(countries, many=True)
+    serializer = SongListSerializer(countries, many=True)
     return Response(serializer.data)
 
 ##########################################################

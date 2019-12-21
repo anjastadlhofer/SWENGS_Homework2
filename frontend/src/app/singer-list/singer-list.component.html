@@ -1,0 +1,41 @@
+<table mat-table [dataSource]="singers">
+
+  <ng-container matColumnDef="alias">
+    <th mat-header-cell *matHeaderCellDef>Alias</th>
+    <td mat-cell *matCellDef="let singer">{{singer.alias}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="first_name">
+    <th mat-header-cell *matHeaderCellDef>First Name</th>
+    <td mat-cell *matCellDef="let singer">{{singer.first_name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="last_name">
+    <th mat-header-cell *matHeaderCellDef>Last Name</th>
+    <td mat-cell *matCellDef="let singer">{{singer.last_name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="year_of_birth">
+    <th mat-header-cell *matHeaderCellDef>Year of Birth</th>
+    <td mat-cell *matCellDef="let singer">{{singer.year_of_birth}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="active">
+    <th mat-header-cell *matHeaderCellDef>Active</th>
+    <td mat-cell *matCellDef="let singer">{{singer.active}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let singers">
+      <button mat-button [routerLink]="'/singer-form/' + singers.id">Edit</button>
+      <button mat-button (click)="deleteSinger(singers)">Delete</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+

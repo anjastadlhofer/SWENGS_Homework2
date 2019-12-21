@@ -32,7 +32,10 @@ class Song(models.Model):
 class Person(models.Model):
     first_name = models.TextField()
     last_name = models.TextField()
+    alias = models.TextField(null=True)
+    active = models.BooleanField()
     year_of_birth = models.IntegerField()
+
 
     def __str__(self):
         return self.first_name + " " + self.last_name

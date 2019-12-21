@@ -7,5 +7,15 @@
     <button mat-menu-item routerLink="song-form">Create
       song</button>
   </mat-menu>
+
+  <button mat-button
+          [matMenuTriggerFor]="singerMenu">Singer</button>
+  <mat-menu #singerMenu="matMenu">
+    <button mat-menu-item routerLink="singer-list">List
+      singers</button>
+    <button mat-menu-item routerLink="singer-form">Create
+      singer</button>
+  </mat-menu>
+
 </mat-toolbar>
 <router-outlet></router-outlet>

@@ -3,23 +3,25 @@
     <input matInput type="text" placeholder="Title" formControlName="title" required>
     <mat-hint align="end">The title of the song</mat-hint>
     <mat-error *ngIf="songFormGroup.controls.title.hasError('required')">Title is required</mat-error>
+    <mat-error *ngIf="songFormGroup.controls.title.hasError('fuck')">Title contains "fuck"</mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <mat-select placeholder="Genre" formControlName="genre">
+    <mat-select placeholder="Genre" formControlName="genre" required>
       <mat-option [value]="genre.key" *ngFor="let genre of genreService.genreNames | keyvalue">{{genre.value}}
       </mat-option>
     </mat-select>
     <mat-hint align="end">The genre of the song</mat-hint>
+    <mat-error *ngIf="songFormGroup.controls.genre.hasError('required')">Genre is required</mat-error>
   </mat-form-field>
 
   <app-date placeholder="Release date" formControlName="release_date" hint="The release date of the song"
             [required]="true"></app-date>
 
   <mat-form-field>
-    <textarea  matInput placeholder="Story" formControlName="story" required></textarea>
+    <textarea matInput placeholder="Story" formControlName="story" required></textarea>
     <mat-hint align="end">The plot of the song</mat-hint>
-    <mat-error *ngIf="songFormGroup.controls.story.hasError('required')">Plot is required</mat-error>
+    <mat-error *ngIf="songFormGroup.controls.story.hasError('required')">Story is required</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -33,14 +35,16 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput type="number" placeholder="Selled" formControlName="selled">
+    <input matInput type="number" placeholder="Selled" formControlName="selled" required>
     <mat-hint align="end">The selled plates of the song</mat-hint>
+    <mat-error *ngIf="songFormGroup.controls.selled.hasError('min')">There needs to be at least one selled plate</mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <mat-select placeholder="Singer"
-                formControlName="singers" multiple>
-      <mat-option [value]="personOption.id" *ngFor="let personOption of personOptions">{{personOption.first_name}}</mat-option>
+    formControlName="singers" multiple>
+    <mat-option [value]="singerOptions.id"
+                *ngFor="let singerOptions of singerOptions">{{singerOptions.first_name}}</mat-option>
     </mat-select>
   </mat-form-field>
 
