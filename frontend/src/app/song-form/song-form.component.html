@@ -1,0 +1,55 @@
+<form [formGroup]="songFormGroup" class="song-form">
+  <mat-form-field>
+    <input matInput type="text" placeholder="Title" formControlName="title" required>
+    <mat-hint align="end">The title of the song</mat-hint>
+    <mat-error *ngIf="songFormGroup.controls.title.hasError('required')">Title is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Genre" formControlName="genre">
+      <mat-option [value]="genre.key" *ngFor="let genre of genreService.genreNames | keyvalue">{{genre.value}}
+      </mat-option>
+    </mat-select>
+    <mat-hint align="end">The genre of the song</mat-hint>
+  </mat-form-field>
+
+  <app-date placeholder="Release date" formControlName="release_date" hint="The release date of the song"
+            [required]="true"></app-date>
+
+  <mat-form-field>
+    <textarea  matInput placeholder="Story" formControlName="story" required></textarea>
+    <mat-hint align="end">The plot of the song</mat-hint>
+    <mat-error *ngIf="songFormGroup.controls.story.hasError('required')">Plot is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Country"
+                formControlName="country">
+      <mat-option [value]="null">Unknown</mat-option>
+      <mat-option [value]="countryOption.id" *ngFor="let countryOption of countryOptions">{{countryOption.name}}
+      </mat-option>
+    </mat-select>
+    <mat-hint align="end">The Release Country of the song</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="Selled" formControlName="selled">
+    <mat-hint align="end">The selled plates of the song</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Singer"
+                formControlName="singers" multiple>
+      <mat-option [value]="personOption.id" *ngFor="let personOption of personOptions">{{personOption.first_name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-checkbox formControlName="band">Band</mat-checkbox>
+  <br/>
+  <mat-card-actions align="center">
+    <button mat-raised-button color="primary" [disabled]="!songFormGroup.valid" (click)="createSong()">
+      <span *ngIf="!songFormGroup.controls.id.value">Create</span>
+      <span *ngIf="songFormGroup.controls.id.value">Update</span>
+    </button>
+  </mat-card-actions>
+</form>

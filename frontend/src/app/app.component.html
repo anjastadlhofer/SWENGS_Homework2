@@ -1,0 +1,11 @@
+<mat-toolbar>
+  <button mat-button
+          [matMenuTriggerFor]="songMenu">Song</button>
+  <mat-menu #songMenu="matMenu">
+    <button mat-menu-item routerLink="song-list">List
+      songs</button>
+    <button mat-menu-item routerLink="song-form">Create
+      song</button>
+  </mat-menu>
+</mat-toolbar>
+<router-outlet></router-outlet>

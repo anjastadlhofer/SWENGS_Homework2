@@ -21,9 +21,9 @@ class Song(models.Model):
     release_date = models.DateField()
     story = models.TextField()
     selled = models.PositiveIntegerField()
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE, null=True)
     band = models.BooleanField()
-    singers = models.ManyToManyField('Person')
+    singers = models.ManyToManyField('Person', related_name="songs", blank=True)
 
     def __str__(self):
         return self.title
