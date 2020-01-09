@@ -10,7 +10,7 @@ import { SongFormComponent } from './song-form/song-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule,
-  MatFormFieldModule,
+  MatFormFieldModule, MatIconModule,
   MatInputModule,
   MatMenuModule, MatNativeDateModule,
   MatSelectModule,
@@ -61,7 +61,8 @@ export function tokenGetter() {
         tokenGetter,
         whitelistedDomains: ['localhost:4200'],
       }
-    })
+    }),
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

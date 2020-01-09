@@ -1,5 +1,4 @@
-<table mat-table [dataSource]="singers">
-
+<table mat-table [dataSource]="singers" width="80%">
   <ng-container matColumnDef="alias">
     <th mat-header-cell *matHeaderCellDef>Alias</th>
     <td mat-cell *matCellDef="let singer">{{singer.alias}}</td>
@@ -28,13 +27,16 @@
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef>Actions</th>
     <td mat-cell *matCellDef="let singers">
-      <button mat-button [routerLink]="'/singer-form/' + singers.id">Edit</button>
-      <button mat-button (click)="deleteSinger(singers)">Delete</button>
+      <button mat-button [routerLink]="'/singer-form/' + singers.id">
+        <mat-icon aria-hidden="false" aria-label="settings_applications">settings_applications</mat-icon>
+        Edit</button>
+      <button mat-button (click)="deleteSinger(singers)"> <mat-icon>delete</mat-icon>Delete</button>
     </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
 </table>
 
 
