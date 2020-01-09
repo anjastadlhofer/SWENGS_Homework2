@@ -26,7 +26,7 @@ urlpatterns = [
     path('song/<int:pk>/get', views.song_form_get),
     path('song/<int:pk>/update', views.song_form_update),
     path('song/<int:pk>/delete', views.song_delete),
-
+    url(r'^api-token-auth/', obtain_jwt_token),
     #url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     #url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     #url(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),

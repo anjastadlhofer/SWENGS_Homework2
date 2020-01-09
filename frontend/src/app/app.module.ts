@@ -20,6 +20,13 @@ import {
 import {DateComponent} from './date/date.component';
 import { SingerListComponent } from './singer-list/singer-list.component';
 import { SingerFormComponent } from './singer-form/singer-form.component';
+import {JwtModule} from '@auth0/angular-jwt';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
@@ -29,6 +36,8 @@ import { SingerFormComponent } from './singer-form/singer-form.component';
     DateComponent,
     SingerListComponent,
     SingerFormComponent,
+    LoginComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +56,12 @@ import { SingerFormComponent } from './singer-form/singer-form.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter,
+        whitelistedDomains: ['localhost:4200'],
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
